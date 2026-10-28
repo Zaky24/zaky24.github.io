@@ -1,0 +1,10 @@
+<svg width="240" height="18" viewBox="0 0 240 18" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ornamen Minangkabau Modern Pucuak Rabuang">
+  <!-- Pucuak Rabuang Minimalist Geometric Chevron Motif -->
+  <path d="M0 9H15L25 2L35 9H55L65 2L75 9H95L105 2L115 9H125L135 2L145 9H165L175 2L185 9H205L215 2L225 9H240" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+  <circle cx="25" cy="2" r="1.5" fill="#f59e0b"/>
+  <circle cx="65" cy="2" r="1.5" fill="#f59e0b"/>
+  <circle cx="105" cy="2" r="1.5" fill="#f59e0b"/>
+  <circle cx="135" cy="2" r="1.5" fill="#f59e0b"/>
+  <circle cx="175" cy="2" r="1.5" fill="#f59e0b"/>
+  <circle cx="215" cy="2" r="1.5" fill="#f59e0b"/>
+</svg>

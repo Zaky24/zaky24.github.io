@@ -3,35 +3,34 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   Design Tokens & CSS Variables (Warm Yellow & Neutral Charcoal/Zinc Palette)
+   Design Tokens & CSS Variables (Warm Amber & Neutral Charcoal Zinc Palette)
    Ira Zaky Elmar - Personal Portfolio
-   Strictly Zero Blue - Pure Amber/Yellow Accent with Neutral Gray & Charcoal
+   Strictly Zero Blue - Pure Amber Accent with Neutral Zinc
    ========================================================================== */
 
 :root {
-  /* Brand Accent: Amber / Warm Gold Yellow */
-  --accent-yellow: #f59e0b;
-  --accent-yellow-hover: #d97706;
-  --accent-yellow-light: #fef3c7;
-  --accent-yellow-glow: rgba(245, 158, 11, 0.22);
-  --accent-yellow-subtle: rgba(245, 158, 11, 0.10);
+  /* Brand Accent: Amber / Warm Gold */
+  --accent-amber: #f59e0b;
+  --accent-amber-hover: #d97706;
+  --accent-amber-light: #fef3c7;
+  --accent-amber-subtle: rgba(245, 158, 11, 0.12);
 
-  /* Light Mode Palette: Neutral Gray & Off-White (Zero Blue) */
+  /* Light Mode Palette: Neutral Zinc & Off-White */
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f5;
   --bg-surface: #ffffff;
   --border-color: #e4e4e7;
   --border-subtle: #d4d4d8;
   --text-main: #18181b;
-  --text-muted: #71717a;
-  --text-dim: #a1a1aa;
-  --navbar-bg: rgba(250, 250, 250, 0.88);
-  --card-shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
-  --card-shadow-hover: 0 12px 30px -4px rgba(245, 158, 11, 0.18);
+  --text-muted: #52525b;
+  --text-dim: #71717a;
+  --navbar-bg: rgba(250, 250, 250, 0.90);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 10px 25px -5px rgba(245, 158, 11, 0.12), 0 8px 10px -6px rgba(245, 158, 11, 0.08);
 }
 
 .dark {
-  /* Dark Mode Palette: Pure Deep Charcoal, Zinc & Warm Yellow (Zero Blue) */
+  /* Dark Mode Palette: Pure Charcoal Zinc & Warm Amber */
   --bg-primary: #121214;
   --bg-secondary: #18181b;
   --bg-surface: #1f1f23;
@@ -40,9 +39,9 @@
   --text-main: #fafafa;
   --text-muted: #a1a1aa;
   --text-dim: #71717a;
-  --navbar-bg: rgba(18, 18, 20, 0.88);
-  --card-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.55);
-  --card-shadow-hover: 0 12px 36px -4px rgba(245, 158, 11, 0.25);
+  --navbar-bg: rgba(18, 18, 20, 0.90);
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+  --card-shadow-hover: 0 12px 30px -4px rgba(245, 158, 11, 0.18);
 }
 
 /* ==========================================================================
@@ -51,286 +50,148 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Accessible focus styling */
+/* Accessible focus outline */
 :focus-visible {
-  outline: 2px solid var(--accent-yellow);
+  outline: 2px solid var(--accent-amber);
   outline-offset: 3px;
 }
 
 /* ==========================================================================
-   Navbar & Glassmorphism
+   Navbar & Glassmorphism (Dose cap: limited to navbar only)
    ========================================================================== */
 
 .nav-glass {
   background: var(--navbar-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .nav-glass.scrolled {
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================================================
-   Hero Section & Atmospheric Cloud System
+   Hero Section Styling
    ========================================================================== */
 
-.hero-bg {
-  background-color: #121214;
+.hero-surface {
   position: relative;
-  overflow: hidden;
+  background-color: var(--bg-primary);
 }
 
-html:not(.dark) .hero-bg {
-  background-color: #f4f4f5;
-  color: #18181b;
-}
-
-html:not(.dark) .hero-bg h1 {
-  color: #18181b !important;
-}
-
-html:not(.dark) .hero-bg #typewriterText {
-  color: #18181b !important;
-}
-
-html:not(.dark) .hero-bg p {
-  color: #3f3f46;
-}
-
-/* Atmosphere container */
-.hero-atmosphere {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Warm Golden Sun / Amber Radial Glow behind clouds */
-.sky-glow-amber {
-  position: absolute;
-  top: -10%;
-  right: 5%;
-  width: 650px;
-  height: 550px;
-  background: radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.07) 45%, transparent 70%);
-  filter: blur(40px);
-  pointer-events: none;
-  z-index: 1;
-}
-
-html:not(.dark) .sky-glow-amber {
-  background: radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.22) 0%, rgba(251, 191, 36, 0.10) 45%, transparent 70%);
-}
-
-/* Ambient Charcoal & Warm Amber Glow (Left/Upper) */
-.sky-glow-gray {
+/* Subtle ambient radial glow for hero focal point */
+.hero-glow {
   position: absolute;
   top: 15%;
-  left: 0;
-  width: 500px;
+  right: 10%;
+  width: 450px;
   height: 450px;
-  background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.08) 0%, rgba(63, 63, 70, 0.12) 40%, transparent 65%);
-  filter: blur(50px);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 1;
+  filter: blur(60px);
+  z-index: 0;
 }
 
-/* Base Cloud Layer Styling */
-.cloud-layer {
-  position: absolute;
-  left: 0;
-  width: 200%;
-  pointer-events: none;
-  will-change: transform;
-  background-repeat: repeat-x;
-}
-
-.cloud-layer-upper {
-  top: 0;
-  height: 280px;
-  background-image: url('../image/clouds-upper.svg');
-  background-size: 800px 280px;
-  opacity: 0.85;
-  z-index: 2;
-  animation: driftCloudsUpper 80s linear infinite;
-}
-
-.cloud-layer-mid {
-  top: 18%;
-  height: 360px;
-  background-image: url('../image/clouds-mid.svg');
-  background-size: 900px 360px;
-  opacity: 0.70;
-  z-index: 2;
-  animation: driftCloudsMid 110s linear infinite;
-}
-
-.cloud-layer-lower {
-  bottom: 0;
-  height: 340px;
-  background-image: url('../image/clouds-lower.svg');
-  background-size: 950px 340px;
-  opacity: 0.95;
-  z-index: 3;
-  animation: driftCloudsLower 65s linear infinite;
-}
-
-@keyframes driftCloudsUpper {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-@keyframes driftCloudsMid {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
-}
-
-@keyframes driftCloudsLower {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-.hero-bottom-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(18, 18, 20, 0.6) 50%, #121214 100%);
-  pointer-events: none;
-  z-index: 4;
-}
-
-html:not(.dark) .hero-bottom-fade {
-  background: linear-gradient(to bottom, transparent 0%, rgba(244, 244, 245, 0.6) 50%, #fafafa 100%);
-}
-
-html:not(.dark) .cloud-layer-upper {
-  opacity: 0.45;
-  filter: brightness(1.7) contrast(0.85);
-}
-
-html:not(.dark) .cloud-layer-mid {
-  opacity: 0.35;
-  filter: brightness(1.7) contrast(0.85);
-}
-
-html:not(.dark) .cloud-layer-lower {
-  opacity: 0.55;
-  filter: brightness(1.6) contrast(0.85);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cloud-layer-upper,
-  .cloud-layer-mid,
-  .cloud-layer-lower {
-    animation: none;
-  }
-}
-
-/* Profile Photo Hover Morph & Flip */
-.profile-morph-wrap {
+/* Clean portrait frame */
+.portrait-frame {
   position: relative;
   display: inline-block;
-  border-radius: 28% 72% 70% 30% / 30% 30% 70% 70%;
-  padding: 8px;
-  background: linear-gradient(135deg, #f59e0b 0%, #27272a 100%);
-  animation: morphBlob 10s ease-in-out infinite alternate;
-  box-shadow: 0 10px 35px -5px rgba(245, 158, 11, 0.35);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 1.25rem;
+  padding: 6px;
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.6) 0%, rgba(39, 39, 42, 0.8) 100%);
+  box-shadow: 0 12px 30px -8px rgba(245, 158, 11, 0.22);
+  transition: transform 0.3s ease;
 }
 
-.profile-morph-wrap:hover {
-  transform: scale(1.04);
+.portrait-frame:hover {
+  transform: translateY(-4px);
 }
 
-@keyframes morphBlob {
-  0% { border-radius: 28% 72% 70% 30% / 30% 30% 70% 70%; }
-  50% { border-radius: 65% 35% 38% 62% / 55% 48% 52% 45%; }
-  100% { border-radius: 35% 65% 58% 42% / 40% 60% 40% 60%; }
-}
-
-.profile-img-inner {
-  width: 250px;
-  height: 250px;
-  border-radius: 24% 76% 66% 34% / 34% 34% 66% 66%;
+.portrait-img {
+  width: 260px;
+  height: 260px;
+  border-radius: 1rem;
   object-fit: cover;
-  transition: all 0.4s ease;
-  animation: morphBlob 10s ease-in-out infinite alternate;
+  transition: opacity 0.3s ease;
 }
 
-@media (min-width: 768px) {
-  .profile-img-inner {
-    width: 290px;
-    height: 290px;
+@media (min-width: 640px) {
+  .portrait-img {
+    width: 300px;
+    height: 300px;
   }
 }
 
-/* Typewriter & Cursor */
-.typing-cursor {
-  display: inline-block;
-  width: 3px;
-  height: 1.15em;
-  vertical-align: -0.15em;
-  background-color: var(--accent-yellow);
-  margin-left: 4px;
-  animation: blinkCursor 0.8s infinite;
+@media (min-width: 1024px) {
+  .portrait-img {
+    width: 320px;
+    height: 320px;
+  }
 }
 
-@keyframes blinkCursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* ==========================================================================
+   Card Hierarchy & Interactions
+   ========================================================================== */
+
+.card-base {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* Floating animation */
-.float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.float-reverse {
-  animation: floatReverse 7s ease-in-out infinite;
-}
-
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes floatReverse {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(12px); }
-}
-
-/* Card Hover Lift & Glow */
-.card-hover-fx {
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.card-hover-fx:hover {
-  transform: translateY(-6px);
+.card-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.45);
   box-shadow: var(--card-shadow-hover);
-  border-color: rgba(245, 158, 11, 0.4);
 }
 
-/* Custom Scrollbar */
+/* ==========================================================================
+   Timeline System for Credentials
+   ========================================================================== */
+
+.timeline-line {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.25rem;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--accent-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
+
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -344,16 +205,19 @@ html:not(.dark) .cloud-layer-lower {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-yellow);
+  background: var(--accent-amber);
 }
 
-/* Mobile Nav Drawer */
+/* ==========================================================================
+   Mobile Navigation Drawer
+   ========================================================================== */
+
 .mobile-drawer {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 
 .mobile-drawer.closed {
-  transform: translateY(-120%);
+  transform: translateY(-110%);
   opacity: 0;
   pointer-events: none;
 }
@@ -364,11 +228,46 @@ html:not(.dark) .cloud-layer-lower {
   pointer-events: auto;
 }
 
-/* Tap Target */
+/* ==========================================================================
+   Accessibility: Tap Targets (R-03)
+   ========================================================================== */
+
 .tap-target {
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Section divider with Minangkabau accent */
+.section-accent-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+.section-accent-divider::before,
+.section-accent-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(to right, transparent, var(--border-color));
+}
+
+.section-accent-divider::after {
+  background: linear-gradient(to left, transparent, var(--border-color));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
