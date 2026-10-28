@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 380" width="1600" height="380" fill="none">
+  <defs>
+    <linearGradient id="lowerBackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#27272a" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#18181b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#121214" stop-opacity="1.0" />
+    </linearGradient>
+    <linearGradient id="lowerFrontGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46" stop-opacity="0.80" />
+      <stop offset="50%" stop-color="#27272a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#121214" stop-opacity="1.0" />
+    </linearGradient>
+    <linearGradient id="amberCrest" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.10" />
+      <stop offset="45%" stop-color="#fbbf24" stop-opacity="0.30" />
+      <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.10" />
+    </linearGradient>
+  </defs>
+
+  <!-- Back Rolling Clouds Tier (Starts at x=0, y=200; Ends at x=1600, y=200) -->
+  <path d="M0,200 
+           C60,160 120,150 180,175 
+           C240,200 300,140 380,120 
+           C460,100 520,130 580,160 
+           C640,190 700,130 780,110 
+           C860,90 940,120 1000,150 
+           C1060,180 1140,110 1220,100 
+           C1300,90 1380,130 1440,160 
+           C1500,190 1550,170 1600,200 
+           L1600,380 L0,380 Z" 
+        fill="url(#lowerBackGrad)" />
+
+  <!-- Amber Horizon Rim Light on Back Tier -->
+  <path d="M180,175 
+           C240,200 300,140 380,120 
+           C460,100 520,130 580,160 
+           C640,190 700,130 780,110 
+           C860,90 940,120 1000,150 
+           C1060,180 1140,110 1220,100 
+           C1260,95 1300,105 1340,120 
+           C1260,110 1180,120 1120,140 
+           C1040,170 980,130 900,120 
+           C820,110 760,150 700,170 
+           C620,190 560,140 480,130 
+           C400,120 340,160 280,180 Z" 
+        fill="url(#amberCrest)" />
+
+  <!-- Front Dense Cloud Bank (Starts at x=0, y=240; Ends at x=1600, y=240) -->
+  <path d="M0,240 
+           C80,210 150,220 220,190 
+           C290,160 370,180 440,210 
+           C510,240 590,170 680,160 
+           C770,150 840,190 910,220 
+           C980,250 1060,180 1150,170 
+           C1240,160 1310,200 1380,225 
+           C1450,250 1520,220 1600,240 
+           L1600,380 L0,380 Z" 
+        fill="url(#lowerFrontGrad)" />
+
+  <!-- Amber Sunlit Edge on Front Peaks -->
+  <path d="M220,190 
+           C290,160 370,180 440,210 
+           C420,205 380,190 330,185 
+           C270,180 230,195 220,190 Z" 
+        fill="url(#amberCrest)" />
+
+  <path d="M590,170 
+           C680,160 770,150 840,190 
+           C820,180 760,165 700,170 
+           C640,175 600,180 590,170 Z" 
+        fill="url(#amberCrest)" />
+
+  <path d="M1060,180 
+           C1150,170 1240,160 1310,200 
+           C1290,190 1230,175 1170,180 
+           C1110,185 1070,190 1060,180 Z" 
+        fill="url(#amberCrest)" />
+</svg>

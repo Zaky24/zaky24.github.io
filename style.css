@@ -1,0 +1,415 @@
+/* ==========================================================================
+   Design Tokens & CSS Variables (Warm Yellow & Neutral Charcoal/Zinc Palette)
+   Ira Zaky Elmar - Personal Portfolio
+   Strictly Zero Blue - Pure Amber/Yellow Accent with Neutral Gray & Charcoal
+   ========================================================================== */
+
+:root {
+  /* Brand Accent: Amber / Warm Gold Yellow */
+  --accent-yellow: #f59e0b;
+  --accent-yellow-hover: #d97706;
+  --accent-yellow-light: #fef3c7;
+  --accent-yellow-glow: rgba(245, 158, 11, 0.22);
+  --accent-yellow-subtle: rgba(245, 158, 11, 0.10);
+
+  /* Light Mode Palette: Neutral Gray & Off-White (Zero Blue) */
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f5;
+  --bg-surface: #ffffff;
+  --border-color: #e4e4e7;
+  --border-subtle: #d4d4d8;
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --text-dim: #a1a1aa;
+  --navbar-bg: rgba(250, 250, 250, 0.88);
+  --card-shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
+  --card-shadow-hover: 0 12px 30px -4px rgba(245, 158, 11, 0.18);
+}
+
+.dark {
+  /* Dark Mode Palette: Pure Deep Charcoal, Zinc & Warm Yellow (Zero Blue) */
+  --bg-primary: #121214;
+  --bg-secondary: #18181b;
+  --bg-surface: #1f1f23;
+  --border-color: #27272a;
+  --border-subtle: #3f3f46;
+  --text-main: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --navbar-bg: rgba(18, 18, 20, 0.88);
+  --card-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.55);
+  --card-shadow-hover: 0 12px 36px -4px rgba(245, 158, 11, 0.25);
+}
+
+/* ==========================================================================
+   Base & Typography
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Navbar & Glassmorphism
+   ========================================================================== */
+
+.nav-glass {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.nav-glass.scrolled {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   Hero Section & Full Atmospheric Cloud System (Yellow & Charcoal Gray)
+   ========================================================================== */
+
+.hero-bg {
+  background-color: #121214;
+  position: relative;
+  overflow: hidden;
+}
+
+html:not(.dark) .hero-bg {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+html:not(.dark) .hero-bg h1 {
+  color: #18181b !important;
+}
+
+html:not(.dark) .hero-bg #typewriterText {
+  color: #18181b !important;
+}
+
+html:not(.dark) .hero-bg p {
+  color: #3f3f46;
+}
+
+/* Atmosphere container */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Warm Golden Sun / Amber Radial Glow behind clouds */
+.sky-glow-amber {
+  position: absolute;
+  top: -10%;
+  right: 5%;
+  width: 650px;
+  height: 550px;
+  background: radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.07) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+html:not(.dark) .sky-glow-amber {
+  background: radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.22) 0%, rgba(251, 191, 36, 0.10) 45%, transparent 70%);
+}
+
+/* Ambient Charcoal & Warm Amber Glow (Left/Upper) */
+.sky-glow-gray {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 500px;
+  height: 450px;
+  background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.08) 0%, rgba(63, 63, 70, 0.12) 40%, transparent 65%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base Cloud Layer Styling */
+.cloud-layer {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  pointer-events: none;
+  will-change: transform;
+  background-repeat: repeat-x;
+}
+
+/* 1. Upper Sky Cloud Canopy (Fills the upper part of the hero) */
+.cloud-layer-upper {
+  top: 0;
+  height: 280px;
+  background-image: url('image/clouds-upper.svg');
+  background-size: 800px 280px;
+  opacity: 0.85;
+  z-index: 2;
+  animation: driftCloudsUpper 80s linear infinite;
+}
+
+/* 2. Mid-Sky Drifting Wisps (Fills the center expanse) */
+.cloud-layer-mid {
+  top: 18%;
+  height: 360px;
+  background-image: url('image/clouds-mid.svg');
+  background-size: 900px 360px;
+  opacity: 0.70;
+  z-index: 2;
+  animation: driftCloudsMid 110s linear infinite;
+}
+
+/* 3. Lower Horizon Rolling Cloud Bank (Fills the lower half) */
+.cloud-layer-lower {
+  bottom: 0;
+  height: 340px;
+  background-image: url('image/clouds-lower.svg');
+  background-size: 950px 340px;
+  opacity: 0.95;
+  z-index: 3;
+  animation: driftCloudsLower 65s linear infinite;
+}
+
+/* Keyframes for seamless, GPU-accelerated horizontal cloud drift */
+@keyframes driftCloudsUpper {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes driftCloudsMid {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes driftCloudsLower {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Smooth Bottom Fade - Ensures the clouds blend seamlessly into the next section with NO CUTOFF */
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(18, 18, 20, 0.6) 50%, #121214 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+html:not(.dark) .hero-bottom-fade {
+  background: linear-gradient(to bottom, transparent 0%, rgba(244, 244, 245, 0.6) 50%, #fafafa 100%);
+}
+
+/* Light mode cloud layer fine-tuning */
+html:not(.dark) .cloud-layer-upper {
+  opacity: 0.45;
+  filter: brightness(1.7) contrast(0.85);
+}
+
+html:not(.dark) .cloud-layer-mid {
+  opacity: 0.35;
+  filter: brightness(1.7) contrast(0.85);
+}
+
+html:not(.dark) .cloud-layer-lower {
+  opacity: 0.55;
+  filter: brightness(1.6) contrast(0.85);
+}
+
+/* Reduced motion preference accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .cloud-layer-upper,
+  .cloud-layer-mid,
+  .cloud-layer-lower {
+    animation: none;
+  }
+}
+
+/* Profile Photo Hover Morph & Flip */
+.profile-morph-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 28% 72% 70% 30% / 30% 30% 70% 70%;
+  padding: 8px;
+  background: linear-gradient(135deg, #f59e0b 0%, #27272a 100%);
+  animation: morphBlob 10s ease-in-out infinite alternate;
+  box-shadow: 0 10px 35px -5px rgba(245, 158, 11, 0.35);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.profile-morph-wrap:hover {
+  transform: scale(1.04);
+}
+
+@keyframes morphBlob {
+  0% {
+    border-radius: 28% 72% 70% 30% / 30% 30% 70% 70%;
+  }
+  50% {
+    border-radius: 65% 35% 38% 62% / 55% 48% 52% 45%;
+  }
+  100% {
+    border-radius: 35% 65% 58% 42% / 40% 60% 40% 60%;
+  }
+}
+
+.profile-img-inner {
+  width: 250px;
+  height: 250px;
+  border-radius: 24% 76% 66% 34% / 34% 34% 66% 66%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+  animation: morphBlob 10s ease-in-out infinite alternate;
+}
+
+@media (min-width: 768px) {
+  .profile-img-inner {
+    width: 290px;
+    height: 290px;
+  }
+}
+
+/* ==========================================================================
+   Typewriter & Code Accent
+   ========================================================================== */
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.15em;
+  vertical-align: -0.15em;
+  background-color: var(--accent-yellow);
+  margin-left: 4px;
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   Floating Cards & Parallax Effects
+   ========================================================================== */
+
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+/* Card Hover Lift & Glow */
+.card-hover-fx {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover-fx:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 4px;
+  border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-yellow);
+}
+
+/* ==========================================================================
+   Mobile Nav Drawer & Accessibility
+   ========================================================================== */
+
+.mobile-drawer {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.mobile-drawer.closed {
+  transform: translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobile-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Minimum 44px tap targets for mobile compliance (R-03) */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

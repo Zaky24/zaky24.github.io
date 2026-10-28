@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive or temporary folders if any
+Disallow: /.agents/
+Disallow: /.git/
+
+# AI Agents and Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://zaky24.github.io/sitemap.xml

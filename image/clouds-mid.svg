@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 360" width="1600" height="360" fill="none">
+  <defs>
+    <linearGradient id="midCloudGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46" stop-opacity="0.30" />
+      <stop offset="100%" stop-color="#18181b" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="midCloudAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.08" />
+      <stop offset="60%" stop-color="#fbbf24" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Mid-sky Cloud Cluster A (Seamless loop between 1350 to 1600 and 0 to 150) -->
+  <path d="M0,180 
+           C40,150 90,140 140,165 
+           C190,190 220,180 250,200 
+           C280,220 260,260 210,260 
+           L0,260 Z" 
+        fill="url(#midCloudGrad1)" />
+
+  <path d="M1350,200 
+           C1380,170 1430,160 1480,185 
+           C1530,210 1560,190 1600,180 
+           L1600,260 L1350,260 Z" 
+        fill="url(#midCloudGrad1)" />
+
+  <!-- Mid-sky Cloud Cluster B (Left-Center) -->
+  <path d="M280,210 
+           C320,170 380,160 430,180 
+           C470,140 540,130 590,160 
+           C630,130 700,140 730,180 
+           C770,160 820,180 840,220 
+           C860,260 810,280 750,280 
+           L330,280 
+           C280,280 250,250 280,210 Z" 
+        fill="url(#midCloudGrad1)" />
+
+  <!-- Amber Sunbeam Reflection on Cluster B -->
+  <path d="M430,180 
+           C470,140 540,130 590,160 
+           C630,130 700,140 730,180 
+           C750,170 780,180 800,200 
+           C740,190 680,175 620,175 
+           C540,175 480,190 430,180 Z" 
+        fill="url(#midCloudAmber)" />
+
+  <!-- Mid-sky Cloud Cluster C (Right-Center, Closer to Sunlight) -->
+  <path d="M880,160 
+           C920,120 980,110 1030,135 
+           C1070,95 1150,85 1200,120 
+           C1250,90 1330,105 1360,150 
+           C1400,130 1450,155 1470,195 
+           C1490,235 1440,260 1380,260 
+           L940,260 
+           C880,260 850,210 880,160 Z" 
+        fill="url(#midCloudGrad1)" />
+
+  <!-- Amber Sunlit Edge on Cluster C -->
+  <path d="M1030,135 
+           C1070,95 1150,85 1200,120 
+           C1250,90 1330,105 1360,150 
+           C1340,140 1280,130 1220,130 
+           C1140,130 1080,145 1030,135 Z" 
+        fill="url(#midCloudAmber)" />
+</svg>

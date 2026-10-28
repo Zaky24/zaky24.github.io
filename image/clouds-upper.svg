@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 320" width="1600" height="320" fill="none">
+  <defs>
+    <linearGradient id="upperCloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#27272a" stop-opacity="0.45" />
+      <stop offset="70%" stop-color="#3f3f46" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#52525b" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="amberRimUpper" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="30%" stop-color="#f59e0b" stop-opacity="0.05" />
+      <stop offset="70%" stop-color="#fbbf24" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.08" />
+    </linearGradient>
+  </defs>
+
+  <!-- Upper Cloud Canopy Layer 1 (Base Body) -->
+  <path d="M0,0 L1600,0 L1600,80 
+           C1520,120 1460,90 1400,130 
+           C1340,170 1260,180 1200,140 
+           C1140,100 1080,160 1000,190 
+           C920,220 840,160 760,180 
+           C680,200 620,150 560,160 
+           C500,170 420,210 340,180 
+           C260,150 180,170 120,130 
+           C60,90 20,110 0,80 Z" 
+        fill="url(#upperCloudGrad)" />
+
+  <!-- Upper Cloud Canopy Layer 2 (Lighter Soft Overlay with Amber Rim) -->
+  <path d="M0,0 L1600,0 L1600,60 
+           C1540,95 1480,70 1420,105 
+           C1360,140 1280,150 1220,115 
+           C1160,80 1100,130 1020,155 
+           C940,180 860,130 780,145 
+           C700,160 640,120 580,130 
+           C520,140 440,175 360,150 
+           C280,125 200,140 140,105 
+           C80,70 30,85 0,60 Z" 
+        fill="url(#amberRimUpper)" />
+</svg>
